@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import { styles } from "./styles";
+import SelectComponent from "../SelectComponent";
 
 export default function WelcomePage() {
   const [selectedProject, setSelectedProject] = useState("");
@@ -28,7 +29,7 @@ export default function WelcomePage() {
         <Typography variant="h5" component="h5" sx = { styles.paragraph}>
           Welcome to CORE's NLP App. Please select your project!
         </Typography>
-        <Select
+        {/* <Select
           label="Please select your Project"
           value={selectedProject}
           onChange={chooseProject}
@@ -37,7 +38,8 @@ export default function WelcomePage() {
           <MenuItem value="project1">Project1</MenuItem>
           <MenuItem value="project2">Project2</MenuItem>
           <MenuItem value="project3">Project3</MenuItem>
-        </Select>
+        </Select> */}
+        <SelectComponent />
       </Box>
     </Box>
   );
