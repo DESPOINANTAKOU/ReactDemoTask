@@ -20,9 +20,7 @@ export default function WelcomePage() {
 
   return (
     <Box sx={styles.parentContainer}>
-      <Box sx={styles.headerContainer}>
-        <HeaderComponent />
-      </Box>
+      <HeaderComponent />
       <Box sx={styles.mainContainer}>
         <Typography variant="h5" component="h5" sx={styles.paragraph}>
           Welcome to CORE's NLP App. Please select your project!

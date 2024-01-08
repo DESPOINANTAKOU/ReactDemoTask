@@ -1,17 +1,12 @@
 import { Box, Button, Input, TextField, Typography } from "@mui/material";
 import React from "react";
 import { styles } from "./styles"
+import HeaderComponent from "../HeaderComponent"
 
 export default function NlpDesign() {
   return (
     <Box sx={styles.container}>
-      <Typography
-        variant="h3"
-        component="h3"
-        sx={{ textAlign: "center", color: "#1976d2", marginTop: "2rem" }}
-      >
-        CORE'S NLP APP
-      </Typography>
+     <HeaderComponent  /> 
       <Box sx={styles.insideContainer}>
         <TextField placeholder="please insert your text"></TextField>
         <Button variant="outlined" sx={{ padding: "14px 14px" }}>

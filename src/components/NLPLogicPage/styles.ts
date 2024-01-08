@@ -19,13 +19,15 @@ export const styles = {
       marginBottom: "2rem",
     },
     button: {
-      width: "25%",
+      width: "20%",
       display: "flex",
       alignItems: "center",
       margin: "auto",
       marginTop: "0rem",
       paddingTop: "1rem",
       paddingBottom: "1rem",
+      backgroundColor: "#c9c4c3",
+      color: "black"
     },
   };
   
