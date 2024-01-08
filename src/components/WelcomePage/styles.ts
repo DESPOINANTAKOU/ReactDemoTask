@@ -5,8 +5,15 @@ export const styles = {
     alignItems: "center",
     justifyContent: "center",
   },
-  mainContainer: {},
-  typographyContainer: {
+  mainContainer: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "column",
+    marginTop: "1rem",
+    gap: " 3rem 1rem"
+  },
+  headerContainer: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -14,10 +21,7 @@ export const styles = {
     width: "100%",
     backgroundColor: "#c9c4c3",
   },
-  typography: {
-    textAlign: "center",
-  },
   paragraph: {
-    marginTop: "10vh"
-  }
+    marginTop: "10vh",
+  },
 };

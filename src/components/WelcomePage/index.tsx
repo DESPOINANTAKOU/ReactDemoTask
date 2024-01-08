@@ -9,6 +9,7 @@ import {
 import React, { useState } from "react";
 import { styles } from "./styles";
 import SelectComponent from "../SelectComponent";
+import HeaderComponent from "../HeaderComponent";
 
 export default function WelcomePage() {
   const [selectedProject, setSelectedProject] = useState("");
@@ -19,26 +20,13 @@ export default function WelcomePage() {
 
   return (
     <Box sx={styles.parentContainer}>
-      <Box sx={styles.typographyContainer}>
-        <Typography variant="h3" component="h3" sx={styles.typography}>
-          CORE'S NLP APP
-        </Typography>
+      <Box sx={styles.headerContainer}>
+        <HeaderComponent />
       </Box>
-
       <Box sx={styles.mainContainer}>
-        <Typography variant="h5" component="h5" sx = { styles.paragraph}>
+        <Typography variant="h5" component="h5" sx={styles.paragraph}>
           Welcome to CORE's NLP App. Please select your project!
         </Typography>
-        {/* <Select
-          label="Please select your Project"
-          value={selectedProject}
-          onChange={chooseProject}
-          input={<OutlinedInput label="please select a projext" />}
-        >
-          <MenuItem value="project1">Project1</MenuItem>
-          <MenuItem value="project2">Project2</MenuItem>
-          <MenuItem value="project3">Project3</MenuItem>
-        </Select> */}
         <SelectComponent />
       </Box>
     </Box>
