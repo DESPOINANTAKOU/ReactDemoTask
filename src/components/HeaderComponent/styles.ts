@@ -2,12 +2,13 @@ export const styles = {
   headerContainer: {
     display: "flex",
     alignItems: "center",
-    justifyContent: "center",
-    height: "15vh",
+    justifyContent: "flex-start",
     width: "100%",
-    backgroundColor: "#c9c4c3",
   },
   typography: {
     textAlign: "center",
+    fontSize: "1.5rem",
+    fontWeight: "bold",
+    margin: "1rem"
   },
 };

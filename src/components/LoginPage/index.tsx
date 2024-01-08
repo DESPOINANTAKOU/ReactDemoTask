@@ -3,6 +3,7 @@ import * as Yup from "yup";
 import { Field, FieldArray, Form, Formik, useFormik } from "formik";
 import { Paper, TextField, Button, Box, Typography } from "@mui/material";
 import { styles } from "./styles";
+import HeaderComponent from "../HeaderComponent";
 
 type LoginValues = {
   username: string;
@@ -50,7 +51,7 @@ const LoginPage = () => {
     }
   };
 
-  const onSubmit = (values) => {
+  const onSubmit = (values: any) => {
     console.log("Submitted values:", values);
   };
 
@@ -63,39 +64,42 @@ const LoginPage = () => {
   console.log(username, password);
 
   return (
-    <Box sx={styles.container}>
-      <Paper elevation={16} square={false} sx={styles.paper}>
-        <Typography variant="h4" component="h4">
-          User Login
-        </Typography>
-        <form onSubmit={formik.handleSubmit}>
-          <Box sx={styles.formContainer}>
-            <TextField
-              label="Username"
-              variant="outlined"
-              error={false}
-              onChange={handleUsername}
-              value={username}
-              sx={styles.textField}
-            />
-            <TextField
-              label="Password"
-              variant="outlined"
-              fullWidth
-              onChange={handlePassword}
-              value={password}
-              sx={styles.textField}
-            />{" "}
-            <Button
-              variant="contained"
-              sx={styles.button}
-              onClick={handleSubmit}
-            >
-              Log In
-            </Button>{" "}
-          </Box>
-        </form>{" "}
-      </Paper>
+    <Box sx={styles.componentContainer}>
+      <HeaderComponent />
+      <Box sx={styles.formContainer}>
+        <Paper elevation={16} square={false} sx={styles.paper}>
+          <Typography variant="h4" component="h4">
+            User Login
+          </Typography>
+          <form onSubmit={formik.handleSubmit}>
+            <Box sx={styles.formContainer}>
+              <TextField
+                label="Username"
+                variant="outlined"
+                error={false}
+                onChange={handleUsername}
+                value={username}
+                sx={styles.textField}
+              />
+              <TextField
+                label="Password"
+                variant="outlined"
+                fullWidth
+                onChange={handlePassword}
+                value={password}
+                sx={styles.textField}
+              />{" "}
+              <Button
+                variant="contained"
+                sx={styles.button}
+                onClick={handleSubmit}
+              >
+                Log In
+              </Button>{" "}
+            </Box>
+          </form>{" "}
+        </Paper>
+      </Box>
     </Box>
   );
 };
