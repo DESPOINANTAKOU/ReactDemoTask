@@ -1,12 +1,5 @@
 export const styles = {
-  parentContainer: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  mainContainer: {},
-  typographyContainer: {
+  headerContainer: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -17,7 +10,4 @@ export const styles = {
   typography: {
     textAlign: "center",
   },
-  paragraph: {
-    marginTop: "10vh"
-  }
 };

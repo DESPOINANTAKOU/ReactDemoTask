@@ -16,7 +16,18 @@ const MenuProps = {
   },
 };
 
-const projects = ["Argus", "Project2", "Project3", "Project4"];
+const names = [
+  'Oliver Hansen',
+  'Van Henry',
+  'April Tucker',
+  'Ralph Hubbard',
+  'Omar Alexander',
+  'Carlos Abbott',
+  'Miriam Wagner',
+  'Bradley Wilkerson',
+  'Virginia Andrews',
+  'Kelly Snyder',
+];
 
 function getStyles(name: string, personName: readonly string[], theme: Theme) {
   return {
@@ -45,13 +56,14 @@ export default function MySelect() {
     <div>
       <FormControl sx={{ m: 1, width: 300, mt: 3 }}>
         <Select
+          multiple
           displayEmpty
           value={personName}
           onChange={handleChange}
           input={<OutlinedInput />}
           renderValue={(selected) => {
             if (selected.length === 0) {
-              return <em>Placeholder</em>;
+              return <em>Please select your project</em>;
             }
 
             return selected.join(", ");
@@ -62,11 +74,11 @@ export default function MySelect() {
           <MenuItem disabled value="">
             <em>Placeholder</em>
           </MenuItem>
-          {projects.map((project) => (
+          {names.map((name) => (
             <MenuItem
-              key={project}
-              value={project}
-              style={getStyles(project, personName, theme)}
+              key={name}
+              value={name}
+              style={getStyles(name, personName, theme)}
             >
               {project}
             </MenuItem>
