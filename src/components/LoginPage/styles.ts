@@ -23,9 +23,10 @@ export const styles = {
   button: {
     backgroundColor: "black",
     margin: "1rem",
-    width: "35%",
+    width: "23vw",
     borderRadius: "37px",
-    padding: "1rem",
+    padding: "0.6rem",
+    fontSize: "1.1em",
   },
   textField: {
     width: "50vw",
