@@ -5,7 +5,7 @@ import HeaderComponent from "../HeaderComponent"
 
 export default function NlpDesign() {
   return (
-    <Box sx={styles.container}>
+    <Box >
      <HeaderComponent  /> 
       <Box sx={styles.insideContainer}>
         <TextField placeholder="please insert your text"></TextField>

@@ -3,8 +3,8 @@ export const styles = {
       width: "100vw",
       height: "100vh",
       display: "flex",
-      // alignItems: "center",
-      // justifyContent: "center",
+      alignItems: "center",
+      justifyContent: "center",
       flexDirection: "column",
     },
     insideContainer: {
