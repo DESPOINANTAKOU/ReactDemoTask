@@ -1,46 +1,24 @@
-import React, { ChangeEvent, useState } from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { Field, FieldArray, Form, Formik, useFormik } from "formik";
-import {
-  Paper,
-  TextField,
-  Button,
-  Box,
-  Typography,
-  createTheme,
-  ThemeProvider,
-} from "@mui/material";
+import { useNavigate } from "react-router";
+import { Box, Button, Paper, Typography } from "@mui/material";
 import { styles } from "./styles";
 import HeaderComponent from "../HeaderComponent";
-import { Navigate } from "react-router-dom";
-
-const theme = createTheme({
-  components: {
-    MuiTextField: {
-      styleOverrides: {
-        root: {
-          "&:active": {},
-          "&:disabled": {},
-          "&:hover": {},
-        },
-      },
-    },
-  },
-});
+import React, { useState } from "react";
 
 type LoginValues = {
   username: string;
   password: string;
+  onSubmit: () => void;
 };
 
-const LoginPage = () => {
-  //initializing states of React
-  const [error, setError] = useState("");
-  const [isClicked, setIsClicked] = useState(false);
+export default function LoginForm() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const validationSchema = Yup.object({
+  const navigate = useNavigate();
+
+  const validationSchema = Yup.object().shape({
     username: Yup.string()
-      .email("Must be a valid email")
       .min(4, "Username must be at least 4 characters")
       .max(20, "Username must be at most 20 characters")
       .matches(
@@ -51,35 +29,6 @@ const LoginPage = () => {
     password: Yup.string().required("Password is required"),
   });
 
-  const onSubmit = (values: any) => {
-    console.log("Submitted values:", values);
-    setIsClicked(true);
-    // if (authenticated === true) {
-    <Navigate to="/Project" state={{ todos: [] }} replace={true} />;
-    // }
-  };
-
-  //initializing formik initial Values
-  const formik = useFormik({
-    initialValues: {
-      formValues: {
-        username: "Please insert your username",
-        password: "Please insert your password",
-      },
-      formErrors: {
-        username: "",
-        password: "",
-      },
-      formValidity: {
-        username: false,
-        password: false,
-      },
-      isSubmitting: false,
-    },
-    validationSchema,
-    onSubmit,
-  });
-
   return (
     <Box sx={styles.componentContainer}>
       <HeaderComponent />
@@ -88,47 +37,39 @@ const LoginPage = () => {
           <Typography variant="h4" component="h4" sx={styles.typography}>
             User Login
           </Typography>
-          <form onSubmit={formik.handleSubmit}>
-            <Box sx={styles.formContainer}>
-              <TextField
-                helperText={formik.initialValues.formErrors.username}
-                className="textField"
-                label="Username"
-                variant="outlined"
-                error={false}
-                value={formik.values.formValues.username}
-                sx={styles.textField}
-                onChange={formik.handleChange}
-              />
-              <TextField
-                helperText={formik.initialValues.formErrors.password}
-                className="textField"
-                label="Password"
-                variant="outlined"
-                fullWidth
-                value={formik.values.formValues.password}
-                sx={styles.textField}
-                onChange={formik.handleChange}
-              />
-              <ThemeProvider theme={theme}>
-                <Button
-                  disabled={formik.initialValues.isSubmitting}
-                  type="submit"
-                  variant="contained"
-                  sx={{
-                    ...styles.button,
-                    backgroundColor: isClicked ? "white" : "black",
-                  }}
-                >
-                  Log In
-                </Button>
-              </ThemeProvider>
-            </Box>
-          </form>{" "}
+          <Formik
+            initialValues={{
+              username: "Please insert your username",
+              password: "Please insert your password",
+            }}
+            validationSchema={validationSchema}
+            onSubmit={(values) => {
+              setIsSubmitting(false);
+              console.log(values);
+              if (authenticated === true) {
+                setIsSubmitting(true);
+                navigate("/Project", { replace: true });
+              }
+            }}
+          >
+            {({ errors, touched, isSubmitting }) => (
+              <Form>
+                <Field name="username" />{" "}
+                {errors.username && touched.username ? (
+                  <div>{errors.username}</div>
+                ) : null}
+                <ErrorMessage name="username" />
+                <Field name="password" type="password" />{" "}
+                {errors.password && touched.password ? (
+                  <div>{errors.password}</div>
+                ) : null}
+                <ErrorMessage name="password" />
+                <Button type="submit">Submit</Button>
+              </Form>
+            )}
+          </Formik>
         </Paper>
       </Box>
     </Box>
   );
-};
-
-export default LoginPage;
+}
