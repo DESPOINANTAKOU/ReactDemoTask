@@ -60,9 +60,6 @@ export default function MySelect() {
           MenuProps={MenuProps}
           inputProps={{ "aria-label": "Without label" }}
         >
-          <MenuItem disabled value="">
-            <em>Placeholder</em>
-          </MenuItem>
           {projects.map((project) => (
             <MenuItem
               key={project}
