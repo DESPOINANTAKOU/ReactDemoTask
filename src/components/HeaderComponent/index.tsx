@@ -1,29 +1,33 @@
-import { Box, Typography } from "@mui/material";
-import { styles } from "./styles";
 
-export default function HeaderComponent() {
-  const hrStyles = {
-    width: "100%",
-    marginLeft: "0px",
-    padding: 0,
-    margin: 0,
-    borderColor: "black",
-    borderRadius: "black",
-  };
+// import React from "react";
+// import AppBar from "@mui/material/AppBar";
+// import Toolbar from "@mui/material/Toolbar";
+// import { Box, IconButton, SxProps } from "@mui/material";
+// import { styles } from "./styles";
+// import logo from "../../assets/images/logo.png";
 
-  return (
-    <>
-      <Box sx={styles.headerContainer}>
-        <img
-          src="/assets/images/coregroup.jpg"
-          alt="core's logo"
-          width="80px"
-        />
-        <Typography variant="h3" component="h3" sx={styles.typography}>
-          CORE'S NLP APP
-        </Typography>
-      </Box>
-      <hr style={hrStyles} />
-    </>
-  );
-}
+// type Props = {
+//   sx: SxProps;
+// };
+
+// const MyHeader = (props: Props) => {
+//   return (
+//     <Box sx={styles.headerContainer}>
+//       <AppBar position="fixed" sx={{ backgroundColor: "#F8F8F8" }}>
+//         <Toolbar>
+//           <img src={logo} alt="Logo" width="80" />
+//           <IconButton
+//             size="large"
+//             edge="start"
+//             color="inherit"
+//             aria-label="menu"
+//             sx={{ ml: 2 }}
+//           ></IconButton>
+//         </Toolbar>
+//       </AppBar>
+//     </Box>
+//   );
+// };
+
+// export default MyHeader;
+
