@@ -1,7 +1,7 @@
 import { Box, Button, Input, TextField, Typography } from "@mui/material";
 import React from "react";
 import { styles } from "./styles";
-import HeaderComponent from "../HeaderComponent";
+import HeaderComponent from "../Header";
 
 export default function NlpDesign() {
   return (

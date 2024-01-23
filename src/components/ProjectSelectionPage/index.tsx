@@ -6,12 +6,14 @@ import {
   MenuItem,
   OutlinedInput,
   SelectChangeEvent,
+  Grid,
 } from "@mui/material";
 import React, { useState } from "react";
 import { styles } from "./styles";
 import SelectComponent from "../SelectComponent";
-import HeaderComponent from "../HeaderComponent";
-import Footer from "../FooterComponent "
+import Header from "../Header";
+import Footer from "../FooterComponent ";
+import SideBar from "../SideBar";
 
 export default function WelcomePage() {
   const [selectedProject, setSelectedProject] = useState("");
@@ -22,14 +24,22 @@ export default function WelcomePage() {
 
   return (
     <Box sx={styles.parentContainer}>
-      <HeaderComponent />
+      <Header />
       <Box sx={styles.mainContainer}>
-        <Typography variant="h5" component="h5" sx={styles.paragraph}>
-          Welcome to CORE's NLP App. Please select your project!
-        </Typography>
-        <SelectComponent />{" "}
+        <Grid container spacing={2}>
+          <Grid item xs={2}>
+            <SideBar />
+          </Grid>
+          <Grid item xs={10}>
+            <Box sx={styles.mainBodyGrid}>
+              <Typography variant="h5" component="h5" sx={styles.paragraph}>
+                Welcome to CORE's NLP App. Please select your project!
+              </Typography>
+              <SelectComponent  sx = {{marginTop: "-7rem"}}/>{" "}
+            </Box>
+          </Grid>
+        </Grid>
       </Box>
-     <Footer />
     </Box>
   );
 }

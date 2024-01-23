@@ -13,5 +13,14 @@ export const styles = {
   },
   paragraph: {
     textAlign: "center",
+    marginTop: "10rem"
   },
+  mainBodyGrid: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    gap: " 3rem 1rem",
+    width: "100%"
+  }
 };

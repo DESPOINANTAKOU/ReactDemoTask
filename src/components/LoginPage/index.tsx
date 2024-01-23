@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import { validationSchema } from "../../Schemas/LoginPageSchema";
 import { Button, Paper, TextField, Typography, Box } from "@mui/material";
 import { styles } from "./styles";
-import HeaderComponent from "../Header";
+import Header from "../Header";
 
 type LoginValues = {
   username: string;
@@ -16,7 +16,7 @@ const LoginForm = () => {
 
   return (
     <Box sx={styles.mainContainer}>
-      <HeaderComponent />
+      <Header />
       <Box sx={styles.loginContainer}>
         <Paper elevation={16} square={false} sx={styles.paper}>
           <Typography variant="h4" component="h4" sx={styles.typography}>
@@ -30,7 +30,7 @@ const LoginForm = () => {
             validationSchema={validationSchema}
             onSubmit={(values: LoginValues) => {
               console.log(values);
-              navigate("/ChartPage");
+              navigate("/Projects");
             }}
           >
             {({ values, handleChange, handleSubmit, handleBlur }) => (
