@@ -1,0 +1,99 @@
+import { Avatar, Grid, Typography, useTheme } from '@mui/material'
+import React from 'react'
+import TIssue from 'src/structures/issue'
+import TMessage from 'src/structures/message'
+
+// import TUser from 'src/structures/user'
+
+interface IMessageListProps {
+  children?: React.ReactNode
+  issue: TIssue
+  onAttachmentRender?: (message: TMessage) => React.ReactNode
+  message?: TMessage
+  // user?: TUser
+}
+
+// eslint-disable-next-line ,
+const MessageList: React.FC<IMessageListProps> = ({
+  children,
+  issue,
+  message,
+  // user,
+  onAttachmentRender
+}) => {
+  console.log('message object', JSON.stringify(message))
+  console.log('issue object', JSON.stringify(issue))
+
+  const theme = useTheme()
+
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString)
+    return date.toLocaleString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+      hour: 'numeric',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true
+    })
+  }
+  if (!Array.isArray(issue.messages) || issue.messages.length === 0) {
+    return <div>No messages found</div>
+  }
+
+  return (
+    <div>
+      {issue.messages.map(singleMessage => {
+        const formattedDate = formatDate(singleMessage.dateCreated)
+
+        return (
+          <div key={singleMessage.id} className="message">
+            <Grid container spacing={2}>
+              <Grid item xs={0.5}>
+                <Avatar
+                  sx={{
+                    bgcolor: singleMessage?.userId === 'manager' ? '#6d4327' : 'purple'
+                  }}
+                  alt="User Avatar"
+                  src="">
+                  {singleMessage?.userId === 'manager' ? 'M' : 'G'}
+                </Avatar>
+              </Grid>
+              <Grid item xs={11}>
+                <div>{formattedDate}</div>
+                <div
+                  style={{
+                    display: 'flex',
+                    gap: '0.5rem',
+                    alignItems: 'flex-start',
+                    justifyContent: 'flex-start'
+                  }}>
+                  <Typography
+                    variant="body1"
+                    sx={{ fontWeight: '600', border: '5px solid transparent' }}>
+                    {singleMessage.userId.charAt(0).toUpperCase() + singleMessage.userId.slice(1)}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      color: 'white',
+                      border: '5px solid transparent',
+                      borderRadius: '50px',
+                      bgcolor:
+                        singleMessage.userId === 'manager' ? theme.palette.primary.main : 'purple'
+                    }}>
+                    {singleMessage.userId === 'manager' ? 'Issuer' : 'Assignee'}
+                  </Typography>
+                  <div> - {singleMessage.content}</div>{' '}
+                </div>
+                {onAttachmentRender && message && onAttachmentRender(message)}
+                <hr />
+              </Grid>
+            </Grid>
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+export default MessageList
