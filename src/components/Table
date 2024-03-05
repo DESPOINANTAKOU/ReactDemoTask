@@ -1,0 +1,59 @@
+import React, { useEffect, useState } from "react";
+import { fetchData } from "../services/axios";
+
+function Table() {
+  type tableItem = {
+    ID: number;
+    Title: string | null;
+    Description: string | null;
+    Price: number | null;
+    Rating: number | null;
+    Stock: number | null;
+    Brand: string | null;
+  };
+  const [customers, setCustomers] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetchData();
+      if (data && data.length > 0) {
+        setCustomers(data);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return (
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Rating</th>
+            <th>Stock</th>
+            <th>Brand</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((tableItem: tableItem, index) => (
+            <tr key={index}>
+              <td>{tableItem.ID}</td>
+              <td>{tableItem.Title}</td>
+              <td>{tableItem.Description}</td>
+              <td>{tableItem.Price}</td>
+              <td>{tableItem.Rating}</td>
+              <td>{tableItem.Stock}</td>
+              <td>{tableItem.Brand}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+export default Table;
